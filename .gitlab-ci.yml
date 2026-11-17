@@ -1,0 +1,13 @@
+# GitLab Pages — static site. Files already live in public/.
+# Push this repo to GitLab; the pipeline below publishes public/ to Pages.
+# Settings → Pages will show the URL once the first pipeline succeeds.
+pages:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "Publishing static site from public/"
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
